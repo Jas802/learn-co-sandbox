@@ -5,10 +5,11 @@ class ApplicationController < Sinatra::Base
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
+    enable :sessions
   end
 
   get "/" do
-    erb :welcome
+    erb :login
   end
 
   post '/login' do
@@ -18,6 +19,15 @@ class ApplicationController < Sinatra::Base
       redirect #needs redirect
     else
       redirect to #a different redirect
+    end
+  end
+  
+  get '/logout' do
+    if session[:user_id] != nil
+      session.destroy
+      redirect to #needs redirect
+    else
+      redirect to #needs redirect
     end
   end
 
