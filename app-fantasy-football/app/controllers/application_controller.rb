@@ -6,10 +6,11 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
+    set :session_secret, "touchdown"
   end
 
   get "/" do
-    erb :'users/login'
+    erb :'users/signup'
   end
   
   helpers do
