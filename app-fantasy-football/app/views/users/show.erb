@@ -1,0 +1,6 @@
+<p> Here are your Players. Good luck, coach! <%= @user.username %>
+<% @user.players.each do |player| %>
+  <ul>
+    <li><a href="/bags/<%=player.id%>"><%= player.name %></a></li>
+  </ul>
+<% end %>

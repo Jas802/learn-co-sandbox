@@ -4,6 +4,14 @@ class SessionsController < ApplicationController
     if !logged_in?
       redirect '/players'
     end
+   
+    @user = User.find(params[:id])
+    if !@user.nil? && @user == current_user
+      erb :'users/show'
+    else
+      redirect 'players'
+    end
+  end
 
     @user = User.find(params[:id])
     if !@user.nil? && @user == current_user
@@ -15,7 +23,7 @@ class SessionsController < ApplicationController
 
   get '/signup' do
     if !session[:user_id]
-      erb :'users/new'
+      erb :'users/signup'
     else
       redirect to 
     end

@@ -12,6 +12,13 @@ class ApplicationController < Sinatra::Base
     erb :login
   end
   
+  helpers do
+    def if_not_logged_in
+      if !logged_in?
+        redirect "/login?error=Sorry,you need to login first."
+      end
+    end
+  
    def logged_in?
       !!session[:user_id]
     end
