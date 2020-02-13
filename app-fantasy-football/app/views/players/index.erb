@@ -1,0 +1,8 @@
+<% @players.each do |player| %>
+  <%= player.name %><br />
+  <%= player.team %> <br />
+  <%= player.position %> <br />
+  <a href="/players/<%=player.id%>/edit">Edit</a>
+  <br />
+  <br />
+<% end %>

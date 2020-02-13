@@ -9,23 +9,16 @@ class SessionsController < ApplicationController
     if !@user.nil? && @user == current_user
       erb :'users/show'
     else
-      redirect 'players'
+      redirect '/players'
     end
   end
 
-    @user = User.find(params[:id])
-    if !@user.nil? && @user == current_user
-      erb :'users/show'
-    else
-      redirect 'players'
-    end
-  end
 
   get '/signup' do
     if !session[:user_id]
       erb :'users/signup'
     else
-      redirect to 
+      redirect to '/players'
     end
   end
   
@@ -35,7 +28,7 @@ class SessionsController < ApplicationController
     else
       @user = User.create(:username => params[:username], :password => params[:password])
       session[:user_id] = @user.id
-      redirect #needs redirect
+      redirect '/players'
     end
   end
 
@@ -44,7 +37,7 @@ class SessionsController < ApplicationController
     if !session[:user_id]
       erb :'users/login'
     else
-      redirect #needs redirect
+      redirect '/players'
     end
   end
   
@@ -52,7 +45,7 @@ class SessionsController < ApplicationController
     user = User.find_by(:username => params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect #needs redirect
+      redirect '/players'
     else
       redirect to '/signup'
     end
@@ -61,9 +54,9 @@ class SessionsController < ApplicationController
   get '/logout' do
     if session[:user_id] != nil
       session.destroy
-      redirect to #needs redirect
+      redirect to '/login'
     else
-      redirect to #needs redirect
+      redirect to '/'
     end
   end
 end
