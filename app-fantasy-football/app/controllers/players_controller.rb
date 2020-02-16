@@ -24,7 +24,7 @@ class PlayersController < ApplicationController
     erb :'players/edit'
   end
   
-  patch '/articles/:id' do #Update action
+  patch '/players/:id' do #edit action
     @player = Player.find_by_id(params[:id])
     @player.name = params[:name]
     @player.nfl_team = params[:nfl_team]
@@ -36,5 +36,5 @@ class PlayersController < ApplicationController
     @player = Player.find_by_id(params[:id])
     @player.delete
     redirect to '/players'
+    end
   end
-end

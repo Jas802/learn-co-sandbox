@@ -3,8 +3,8 @@
 
   <h2>Players</h2>
   <ul>
-  <% @player.nfl_team.each do |team| %>
-    <li><a href="/players/<%=team.id%>"><%= team.name %></a></li>
+  <% @player.each do |player| %>
+    <li><a href="/players/<%=player.id%>"><%= player.name %></a></li>
   <% end%>
   </ul>
   <a href="/players/<%=@player.id%>/edit">Edit</a>
