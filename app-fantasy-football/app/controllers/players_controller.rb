@@ -24,12 +24,14 @@ class PlayersController < ApplicationController
     erb :'players/edit'
   end
   
-  patch '/players/:id' do #edit action
-    @player = Player.find_by_id(params[:id])
-    @player.name = params[:name]
-    @player.nfl_team = params[:nfl_team]
-    @player.save
-    redirect to "/players/#{@player.id}"
+  post "/players/:id" do #update action
+    if_not_logged_in
+    @player = Player.find(params[:id])
+    unless Player.valid_params?(params)
+      redirect "/players/#{@player.id}/edit?error=invalid"
+    end
+    @player.update(params.select{|p|p=="nfl_team"})
+    redirect "/players/#{@player.id}"
   end
   
   delete "/players/:id" do #delete/destroy action

@@ -1,9 +1,8 @@
 <h1>Did Someone Just Get Traded? Edit Your Players! </h1>
 
 <form action="/players/<%=@player.id %>" method="POST">
-  #<input id="hidden" type="hidden" name="_method" value="patch">
   <label> Player's New Team </label>
-  <input type="text" name="name" value="<%=@player.nfl_team %>"> </br>
+  <input type="text" name="nfl_team" value="<%=@player.nfl_team %>"> </br>
 
   <input type="submit" value="Update">
 </form>

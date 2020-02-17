@@ -1,12 +1,8 @@
 <%= @player.nfl_team %><br />
   <%= @player.position %> <br />
 
-  <h2>Players</h2>
-  <ul>
-  <% @player.each do |player| %>
-    <li><a href="/players/<%=player.id%>"><%= player.name %></a></li>
-  <% end%>
-  </ul>
+  <h2> <%= @player.name %></h2>
+  
   <a href="/players/<%=@player.id%>/edit">Edit</a>
   <br />
   <br />
