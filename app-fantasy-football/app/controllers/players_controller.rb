@@ -34,7 +34,7 @@ class PlayersController < ApplicationController
     redirect "/players/#{@player.id}"
   end
   
-  delete "/players/:id" do #delete/destroy action
+  get "/players/:id/delete" do #delete/destroy action
     @player = Player.find_by_id(params[:id])
     @player.delete
     redirect to '/players'
