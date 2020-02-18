@@ -11,6 +11,17 @@ class PlayersController < ApplicationController
     erb :'players/new'
   end
   
+  post "/players" do #create action
+    if_not_logged_in
+    @player = Player.new(params) #protect against empty params
+    @player.user = current_user
+    if valid_params?(params)
+    redirect to "/players/#{@player.id}"
+  else
+    erb :'players/new'
+  end
+end
+  
   get "/players/:id" do #Read action
     if_not_logged_in
     @player = Player.find(params[:id])
