@@ -15,7 +15,8 @@ class PlayersController < ApplicationController
     if_not_logged_in
     @player = Player.new(params) #protect against empty params
     @player.user = current_user
-    if valid_params?(params)
+    @player.save
+    if Player.valid_params?(params)
     redirect to "/players/#{@player.id}"
   else
     erb :'players/new'
