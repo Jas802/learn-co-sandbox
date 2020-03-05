@@ -9,8 +9,8 @@
   
   <label> Player's New Position</label>
   <input type="text" name="position" value="<%=@player.position %>"> </br>
-  
-  
-
+  <% if @error_message %>
+  <%= @error_message %>
+  <% end %>
   <input type="submit" value="Update">
 </form>

@@ -39,10 +39,10 @@ end
   post "/players/:id" do #update action
     if_not_logged_in
     @player = Player.find(params[:id])
-    unless Player.valid_params?(params)
+    unless Player.valid_params?(params) && @player.user_id == current_user.id
       redirect "/players/#{@player.id}/edit?error=invalid"
     end
-    @player.update(params.select{|p|p=="nfl_team"})
+    @player.update(params) #.select{|p|p=="nfl_team"})
     redirect "/players/#{@player.id}"
   end
   
