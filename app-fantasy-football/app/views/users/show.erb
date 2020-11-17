@@ -1,8 +1,0 @@
-<h1> Here are your Players. Good luck, <%= @user.username %> </h1>
-<% @user.players.each do |player| %>
-  <ul>
-    <li><a href="/players/<%=player.id%>"><%= player.name %></a></li>
-  </ul>
-<% end %>
-<a href="/players">Back To Players</a>
-<a href="/logout">logout</a>
